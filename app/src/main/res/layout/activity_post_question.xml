@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".PostQuestion">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/the_toolbar"
+        android:background="#881d10"
+        android:elevation="4dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post A Question"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#881d10"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/enter_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Question"
+        android:textSize="18sp"
+        android:textColor="#881d10"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Post"
+            android:layout_margin="10dp"
+            android:textSize="20sp"
+            android:textAllCaps="false"/>
+         <Button
+             android:id="@+id/post"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:layout_margin="10dp"
+             android:text="Cancel"
+             android:textSize="20sp"
+             android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -20,7 +20,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Signup extends AppCompatActivity {
+public class
+Signup extends AppCompatActivity {
     final OkHttpClient client = new OkHttpClient();
     EditText FName, LName, stdNum, pass;
 
