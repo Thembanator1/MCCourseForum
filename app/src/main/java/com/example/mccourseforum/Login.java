@@ -74,4 +74,9 @@ public class Login extends AppCompatActivity {
     public void goBackLog(View view) {
         finish();
     }
+
+    public void goS(View view) {
+        Intent intent = new Intent(this , Signup.class );
+        startActivity(intent);
+    }
 }
