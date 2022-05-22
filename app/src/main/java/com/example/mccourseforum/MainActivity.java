@@ -22,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this , Login.class );
         startActivity(intent);
     }
+    public void goQ (View view){
+        Intent i = new Intent(this,QuestionsDisplay.class);
+        startActivity(i);
+    }
 
 
 }
