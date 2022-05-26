@@ -48,16 +48,18 @@ public class PostQuestion extends AppCompatActivity {
                     .build();
 
             client.newCall(request).enqueue(new Callback() {
+
                 @Override
                 public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 }
 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    String resBody = response.body().string();
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),"Posted",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_SHORT).show();
 
                         }
                     });
