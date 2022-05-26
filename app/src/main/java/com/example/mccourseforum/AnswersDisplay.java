@@ -12,12 +12,11 @@ public class AnswersDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answers_display);
-        Bundle bundle = getIntent().getExtras();
-        //loggedIn = bundle.getString("loggedUser");
+        Intent j = getIntent();
+        //loggedIn = j.getStringExtra("loggedUser");
     }
 
     public void ret(View view){
-        Intent i = new Intent(this, QuestionsDisplay.class);
-        startActivity(i);
+        this.finish();
     }
 }

@@ -27,13 +27,14 @@ import okhttp3.Response;
 public class QuestionsDisplay extends AppCompatActivity {
     LinearLayout c;
     String loggedIn;
+    String res;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getIntent().getExtras();
-        loggedIn = bundle.getString("loggedUser");
-        System.out.println(loggedIn);
+        Intent j = getIntent();
         setContentView(R.layout.activity_questions_display);
+        loggedIn = j.getStringExtra("loggedUser");
+        System.out.println(loggedIn);
         c = findViewById(R.id.mainLayout);
         OkHttpClient client = new OkHttpClient();
 
@@ -52,7 +53,8 @@ public class QuestionsDisplay extends AppCompatActivity {
                 // ... check for failure using `isSuccessful` before proceeding
 
                 // Read data on the worker thread
-                final String responseData = response.body().string();
+                 final String responseData = response.body().string();
+                 res = responseData;
 
                 // Run view-related code back on the main thread
                 QuestionsDisplay.this.runOnUiThread(new Runnable() {
@@ -68,6 +70,8 @@ public class QuestionsDisplay extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void processJSON (String json) throws JSONException {
         JSONArray ja = new JSONArray(json);
@@ -96,5 +100,11 @@ public class QuestionsDisplay extends AppCompatActivity {
         Intent intent = new Intent(this , PostQuestion.class );
         intent.putExtra("loggedUser",loggedIn);
         startActivity(intent);
+        //this.recreate();
     }
+
+    public  void refreshQ(View v){
+        this.recreate();
+    }
+
 }

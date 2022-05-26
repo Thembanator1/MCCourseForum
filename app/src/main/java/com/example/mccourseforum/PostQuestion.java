@@ -30,9 +30,9 @@ public class PostQuestion extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle bundle = getIntent().getExtras();
-        loggedIn = bundle.getString("loggedUser");
         setContentView(R.layout.activity_post_question);
+        Intent j = getIntent();
+        loggedIn = j.getStringExtra("loggedUser");
         the_query = findViewById(R.id.enter_query);
         cancel = findViewById(R.id.cancel);
         post = findViewById(R.id.post);
@@ -46,7 +46,7 @@ public class PostQuestion extends AppCompatActivity {
                     .add("askedBy",loggedIn)
                     .build();
             Request request = new Request.Builder()
-                    .url("https://lamp.ms.wits.ac.za/~s2399508/questions.php")
+                    .url("https://lamp.ms.wits.ac.za/~s2456718/questions.php")
                     .post(FormBody)
                     .build();
 
@@ -63,6 +63,9 @@ public class PostQuestion extends AppCompatActivity {
                         @Override
                         public void run() {
                             Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_SHORT).show();
+                            if(resBody.equals("qAdded")){
+                                PostQuestion.this.finish();
+                            }
 
                         }
                     });
@@ -70,10 +73,12 @@ public class PostQuestion extends AppCompatActivity {
             });
 
         }
+        else{
+            Toast.makeText(getApplicationContext(),"Please enter a question",Toast.LENGTH_SHORT).show();
+        }
     }
     public  void returntoQ(View v){
-        Intent i = new Intent(this, QuestionsDisplay.class);
-        startActivity(i);
+        this.finish();
     }
 
 
