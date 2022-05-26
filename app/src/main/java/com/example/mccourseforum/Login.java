@@ -55,7 +55,9 @@ public class Login extends AppCompatActivity {
                     public void run() {
                         Toast.makeText(getApplicationContext(), resBody, Toast.LENGTH_SHORT).show();
                         if(resBody.equals("login successful!")){
-                            Intent i = new Intent(view.getContext(), MainActivity.class);
+                            String loggedIn = logNum.getText().toString();
+                            Intent i = new Intent(view.getContext(), QuestionsDisplay.class);
+                            i.putExtra("loggedUser", loggedIn);
                             startActivity(i);
                         }
                     }

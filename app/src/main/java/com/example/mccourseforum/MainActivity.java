@@ -12,6 +12,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        Bundle bundle = getIntent().getExtras();
+//        String loggedIn = bundle.getString("loggedUser");
+//        System.out.println(loggedIn);
     }
     public void goS(View view) {
         Intent intent = new Intent(this , Signup.class );

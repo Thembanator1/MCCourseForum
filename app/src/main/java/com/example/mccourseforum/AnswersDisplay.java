@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 
 public class AnswersDisplay extends AppCompatActivity {
-
+    String loggedIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answers_display);
+        Bundle bundle = getIntent().getExtras();
+        //loggedIn = bundle.getString("loggedUser");
     }
 
     public void ret(View view){

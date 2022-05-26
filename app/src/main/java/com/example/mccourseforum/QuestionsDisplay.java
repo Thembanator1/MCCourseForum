@@ -26,9 +26,13 @@ import okhttp3.Response;
 
 public class QuestionsDisplay extends AppCompatActivity {
     LinearLayout c;
+    String loggedIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
+        loggedIn = bundle.getString("loggedUser");
+        System.out.println(loggedIn);
         setContentView(R.layout.activity_questions_display);
         c = findViewById(R.id.mainLayout);
         OkHttpClient client = new OkHttpClient();
@@ -79,7 +83,9 @@ public class QuestionsDisplay extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent i = new Intent(QuestionsDisplay.this,AnswersDisplay.class);
+                    //i.putExtra("loggedUser",loggedIn);
                     startActivity(i);
+
                 }
 
             });
@@ -88,6 +94,7 @@ public class QuestionsDisplay extends AppCompatActivity {
     }
     public void gop(View view) {
         Intent intent = new Intent(this , PostQuestion.class );
+        intent.putExtra("loggedUser",loggedIn);
         startActivity(intent);
     }
 }

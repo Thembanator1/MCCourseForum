@@ -26,10 +26,12 @@ public class PostQuestion extends AppCompatActivity {
      EditText the_query;
      Button cancel,post;
     final OkHttpClient client = new OkHttpClient();
-
+    String loggedIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
+        loggedIn = bundle.getString("loggedUser");
         setContentView(R.layout.activity_post_question);
         the_query = findViewById(R.id.enter_query);
         cancel = findViewById(R.id.cancel);
@@ -40,7 +42,8 @@ public class PostQuestion extends AppCompatActivity {
         the_question = the_query.getText().toString();
         if (!the_question.equals("")) {
             RequestBody FormBody = new FormBody.Builder()
-                    .add("enter_query", the_question)
+                    .add("question", the_question)
+                    .add("askedBy",loggedIn)
                     .build();
             Request request = new Request.Builder()
                     .url("https://lamp.ms.wits.ac.za/~s2399508/questions.php")
@@ -68,5 +71,10 @@ public class PostQuestion extends AppCompatActivity {
 
         }
     }
+    public  void returntoQ(View v){
+        Intent i = new Intent(this, QuestionsDisplay.class);
+        startActivity(i);
+    }
+
 
 }

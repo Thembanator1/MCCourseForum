@@ -3,19 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/AndroidStudioProjects/MCCourseForum/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MCCourseForum/app/src/main/res/layout/activity_post_question.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/MCCourseForum/app/src/main/res/layout/activity_questions_display.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_answers_display.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_post_question.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_questions_display.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/naomi/projects/MCCourseForum/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/themb/AndroidStudioProjects/MCCourseForum/app/src/main/res/layout/activity_signup.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
