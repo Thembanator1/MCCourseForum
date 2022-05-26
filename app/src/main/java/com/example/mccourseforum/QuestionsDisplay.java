@@ -86,4 +86,8 @@ public class QuestionsDisplay extends AppCompatActivity {
         }
 
     }
+    public void gop(View view) {
+        Intent intent = new Intent(this , PostQuestion.class );
+        startActivity(intent);
+    }
 }
