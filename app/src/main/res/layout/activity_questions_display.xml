@@ -18,9 +18,146 @@
         android:inputType="textPersonName"
         android:text="Questions Asked"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/more"
+        android:layout_gravity="right"
+        android:src="@drawable/ic_baseline_more"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/asked_by_Textview"
+        android:text="Asked by"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topic"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Topic Name"
+            android:gravity="center"
+            android:id="@+id/Topictextview"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/AskedOn"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="Sep 15,2022"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.example.mccourseforum.questionsLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expand_textview"
+            app:maxCollapsedLines="3"
+            app:animDuration="200">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/expandable_text"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="16dp"
+                android:textColor="@color/black"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/expand_collapse"
+            android:padding="16dp"
+            android:layout_gravity="right|bottom"
+            android:background="@android:color/transparent"/>
+        </com.example.mccourseforum.questionsLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Like"
+            android:src="@drawable/ic_baseline_thumb_up_alt_24"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/dislike"
+            android:src="@drawable/ic_baseline_thumb_down_alt_24"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Comment"
+            android:src="@drawable/ic_baseline_add_comment_24"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Save"
+            android:src="@drawable/ic_baseline_save_24"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Likes"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="dislikes"
+            android:layout_weight="1"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="View All Comments"
+            android:layout_weight="2"
+            android:textColor="@color/black"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="586dp">
@@ -29,7 +166,11 @@
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical" />
+
+
     </ScrollView>
 
     <Button
@@ -37,5 +178,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Post a question" />
+
 
 </LinearLayout>
