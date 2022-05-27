@@ -8,12 +8,7 @@
     tools:context=".PostQuestion">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/the_toolbar"
-        android:background="#881d10"
-        android:elevation="4dp"/>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -40,21 +35,23 @@
 
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Post"
+            android:onClick="post_it"
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textAllCaps="false"/>
          <Button
-             android:id="@+id/post"
+             android:id="@+id/cancel"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_weight="1"
              android:layout_margin="10dp"
              android:text="Cancel"
+             android:onClick="returntoQ"
              android:textSize="20sp"
              android:textAllCaps="false"/>
 

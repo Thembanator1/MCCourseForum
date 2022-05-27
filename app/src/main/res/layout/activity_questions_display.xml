@@ -1,176 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="10dp"
-    android:elevation="10dp"
-    android:layout_margin="10dp">
+    android:orientation="vertical"
+    android:background="@color/cardview_shadow_end_color"
+    tools:context=".QuestionsDisplay">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"/>
+        android:ems="10"
+        android:fontFamily="casual"
+        android:importantForAccessibility="auto"
+        android:inputType="textPersonName"
+        android:text="Questions Asked"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="586dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/Asked_by_Textview"
-                android:gravity="center"
-                android:text="@string/asked_by"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="#000"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"/>
-
-            <ImageView
-                android:id="@+id/more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_more"/>
-        </RelativeLayout>
         <LinearLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="3dp"
-            android:orientation="horizontal">
+            android:orientation="vertical" />
+    </ScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/topic"
-                android:textColor="#000"/>
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post a question" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/topic_name"
-                android:gravity="center"
-                android:id="@+id/topicTextView"
-                android:textSize="15dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/askedOnTextview"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="May 27,2022"
-                android:textColor="@color/black"
-                android:textSize="15dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.ms.square.android.expandabletextview.ExpandableTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/expand_text_view"
-                app:maxCollapsedLines="5"
-                app:animDuration="200">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/expandable_text"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:textSize="16dp"
-                    android:textColor="#000"/>
-        <ImageButton
-            android:id="@+id/expand_collapse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_gravity="right|bottom"
-            android:background="@android:color/transparent"/>
-
-    </com.ms.square.android.expandabletextview.ExpandableTextView>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_thumb_up_alt_24"
-                android:id="@+id/like"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_thumb_down_alt_24"
-                android:id="@+id/dislike"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_add_comment_24"
-                android:id="@+id/comment"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_save_24"
-                android:id="@+id/save"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Likes"
-                    android:textColor="#000"
-                    android:id="@+id/likes"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="disikes"
-                    android:textColor="#000"
-                    android:id="@+id/dislikes"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="View All Comments"
-                    android:textColor="#000"
-                    android:id="@+id/comments"/>
-            </LinearLayout>
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
-
-
-
-
-
-
-
-
-
+</LinearLayout>

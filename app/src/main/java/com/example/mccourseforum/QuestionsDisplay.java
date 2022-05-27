@@ -30,7 +30,7 @@ public class QuestionsDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_display);
-        //c = findViewById(R.id.mainLayout);
+        c = findViewById(R.id.mainLayout);
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
