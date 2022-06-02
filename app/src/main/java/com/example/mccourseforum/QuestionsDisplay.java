@@ -35,6 +35,7 @@ public class QuestionsDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_questions_display);
         loggedIn = j.getStringExtra("loggedUser");
         System.out.println(loggedIn);
+        //fdjxcvbfkvfnj
         c = findViewById(R.id.mainLayout);
         OkHttpClient client = new OkHttpClient();
 
