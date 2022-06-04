@@ -11,7 +11,10 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import okhttp3.OkHttpClient;
+
 public class PostAnswer extends AppCompatActivity {
+    final OkHttpClient client = new OkHttpClient();
     String loggedIn;
     String Ques;
 
@@ -37,5 +40,9 @@ public class PostAnswer extends AppCompatActivity {
     }
 
     public void upVote(View view) {
+    }
+
+    public void onReply(View view) {
+        
     }
 }
