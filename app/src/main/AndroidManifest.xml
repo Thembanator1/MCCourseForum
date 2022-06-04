@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MCCourseForum"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".PostQuestion"
+            android:name=".PostAnswer"
             android:exported="false" />
         <activity
             android:name=".AnswersDisplay"
@@ -23,6 +23,9 @@
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".PostQuestion"
             android:exported="false" />
         <activity
             android:name=".Signup"

@@ -80,6 +80,7 @@ public class QuestionsDisplay extends AppCompatActivity {
             JSONObject jo = ja.getJSONObject(i);
             questionsLayout ql = new questionsLayout(this);
             ql.populate(jo);
+            String q= ql.Ques;
             if(i % 2==0){
                 ql.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
@@ -87,8 +88,9 @@ public class QuestionsDisplay extends AppCompatActivity {
             ql.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(QuestionsDisplay.this,AnswersDisplay.class);
-                    //i.putExtra("loggedUser",loggedIn);
+                    Intent i = new Intent(QuestionsDisplay.this,PostAnswer.class);
+                    i.putExtra("Question",q);
+                    i.putExtra("loggedUser",loggedIn);
                     startActivity(i);
 
                 }

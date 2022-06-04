@@ -54,6 +54,8 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(), resBody, Toast.LENGTH_SHORT).show();
+                        String err = resBody;
+                        System.out.println(err);
                         if(resBody.equals("login successful!")){
                             String loggedIn = logNum.getText().toString();
                             Intent i = new Intent(view.getContext(), QuestionsDisplay.class);

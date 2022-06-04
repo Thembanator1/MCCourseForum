@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class questionsLayout extends LinearLayout {
+    String Ques ;
     TextView question;
     TextView postedBy;
     TextView upvotes;
@@ -33,6 +34,7 @@ public class questionsLayout extends LinearLayout {
     }
     public void populate (JSONObject jo) throws JSONException {
         question.setText(jo.getString("que"));
+        Ques  = jo.getString("que");
         String name = "Posted by " + jo.getString("Fname") +" " + jo.getString("Lname");
         postedBy.setText(name);
         String up = jo.getString("upvotes") + " up votes";
