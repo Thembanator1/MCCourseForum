@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".AnswersDisplay">
 
     <Button
@@ -12,4 +13,21 @@
         android:layout_height="wrap_content"
         android:onClick="ret"
         android:text="return" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="260dp"
+            android:layout_height="97dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_gravity="right"
+            android:orientation="vertical"></LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -35,13 +35,14 @@ public class PostAnswer extends AppCompatActivity {
     int quesID;
     LinearLayout c;
     String res;
-
+    EditText ansB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_answer);
-        c= findViewById(R.id.ansLayout);
+        c = findViewById(R.id.ansLayout);
+        ansB = findViewById(R.id.ansBox);
         TextView ques = (TextView) findViewById(R.id.ques);
         Intent j = getIntent();
         loggedIn = j.getStringExtra("loggedUser");
@@ -52,7 +53,7 @@ public class PostAnswer extends AppCompatActivity {
         ques.setText(Ques);
         answer = (EditText) findViewById(R.id.ansBox);
 
-        OkHttpClient client = new OkHttpClient();
+        //OkHttpClient client = new OkHttpClient();
 
         FormBody formBody = new FormBody.Builder()
                 .add("qID", qID)
@@ -126,6 +127,8 @@ public class PostAnswer extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
+                        System.out.println(resBody);
+
                     }
                 });
 

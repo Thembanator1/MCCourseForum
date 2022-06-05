@@ -35,7 +35,6 @@ public class QuestionsDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_questions_display);
         loggedIn = j.getStringExtra("loggedUser");
         System.out.println(loggedIn);
-        //fdjxcvbfkvfnj
         c = findViewById(R.id.mainLayout);
         OkHttpClient client = new OkHttpClient();
 
@@ -83,7 +82,7 @@ public class QuestionsDisplay extends AppCompatActivity {
             String q= ql.Ques;
             String qID = ql.Qid;
             if(i % 2==0){
-                ql.setBackgroundColor(Color.parseColor("#EEEEFF"));
+                ql.setBackgroundColor(Color.parseColor("#FF0000"));
             }
             c.addView(ql);
             ql.setOnClickListener(new View.OnClickListener() {
