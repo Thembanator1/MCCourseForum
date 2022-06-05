@@ -24,28 +24,16 @@
         android:id="@+id/ansBox"
         android:layout_width="match_parent"
         android:layout_height="76dp"
+        android:autofillHints=""
         android:ems="10"
+        android:hint="Type Your Response"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ques"
-        app:layout_constraintVertical_bias="0.095"
-        android:autofillHints="" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="171dp"
-        android:layout_height="34dp"
-        android:fontFamily="@font/poppinsbold"
-        android:gravity="center"
-        android:text="Your Answer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.893" />
 
     <Button
         android:id="@+id/replyButton"
@@ -55,37 +43,54 @@
         android:text="Reply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintVertical_bias="0.995" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="77dp"
-        android:layout_height="64dp"
+        android:layout_width="79dp"
+        android:layout_height="48dp"
         android:contentDescription="@string/app_name"
         android:onClick="downVote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244"
+        app:layout_constraintVertical_bias="0.188"
         app:srcCompat="@drawable/ic_baseline_down" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="77dp"
-        android:layout_height="68dp"
+        android:layout_width="75dp"
+        android:layout_height="52dp"
         android:contentDescription="@string/app_name"
         android:onClick="upVote"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.014"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.093"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/ic_baseline_up" />
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="426dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622">
+
+        <LinearLayout
+            android:id="@+id/ansLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

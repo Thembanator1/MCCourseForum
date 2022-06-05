@@ -46,7 +46,7 @@ public class QuestionsDisplay extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
-
+                e.printStackTrace();
             }
 
             @Override
@@ -81,6 +81,7 @@ public class QuestionsDisplay extends AppCompatActivity {
             questionsLayout ql = new questionsLayout(this);
             ql.populate(jo);
             String q= ql.Ques;
+            String qID = ql.Qid;
             if(i % 2==0){
                 ql.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
@@ -91,6 +92,7 @@ public class QuestionsDisplay extends AppCompatActivity {
                     Intent i = new Intent(QuestionsDisplay.this,PostAnswer.class);
                     i.putExtra("Question",q);
                     i.putExtra("loggedUser",loggedIn);
+                    i.putExtra("qID", qID);
                     startActivity(i);
 
                 }

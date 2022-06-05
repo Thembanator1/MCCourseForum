@@ -7,25 +7,25 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class questionsLayout extends LinearLayout {
-    String Ques ;
-    String Qid;
-    TextView question;
-    TextView postedBy;
+public class answersLayout extends LinearLayout {
+
+    String Ans ;
+    String ansID;
+    TextView Answer;
+    TextView AnsweredBy;
     TextView upvotes;
     TextView downvotes;
-    public questionsLayout(Context context) {
-        super(context);
+    public answersLayout(Context context) { super(context);
         setOrientation(LinearLayout.VERTICAL);
         //TextView qTitle = new TextView(context);
-         question = new TextView(context);
-         postedBy = new TextView(context);
-         upvotes  = new TextView(context);
-         downvotes = new TextView(context);
+        Answer = new TextView(context);
+        AnsweredBy = new TextView(context);
+        upvotes  = new TextView(context);
+        downvotes = new TextView(context);
 
         //addView(qTitle);
-        addView(postedBy);
-        addView(question);
+        addView(AnsweredBy);
+        addView(Answer);
         LinearLayout votesLayout = new LinearLayout(context);
         votesLayout.setOrientation(LinearLayout.HORIZONTAL);
         upvotes.setPadding(0,0 ,100,0);
@@ -34,11 +34,11 @@ public class questionsLayout extends LinearLayout {
         addView(votesLayout);
     }
     public void populate (JSONObject jo) throws JSONException {
-        question.setText(jo.getString("que"));
-        Ques  = jo.getString("que");
-        Qid = jo.getString("qID");
-        String name = "Posted by " + jo.getString("Fname") +" " + jo.getString("Lname");
-        postedBy.setText(name);
+        Answer.setText(jo.getString("ans"));
+        Ans  = jo.getString("ans");
+        ansID = jo.getString("ID");
+       String name = "Posted by " + jo.getString("Fname") +" " + jo.getString("Lname");
+       AnsweredBy.setText(name);
         String up = jo.getString("upvotes") + " up votes";
         upvotes.setText(up);
         String down = jo.getString("downvotes") + " down votes";
