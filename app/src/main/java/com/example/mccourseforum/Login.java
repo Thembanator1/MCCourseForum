@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
                 .add("pass", logPass.getText().toString())
                 .build();
         Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/~s2496778/checkout.php")
+                .url("https://lamp.ms.wits.ac.za/~s2496778/login.php")
                 .post(FormBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {

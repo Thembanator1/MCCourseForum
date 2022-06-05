@@ -32,7 +32,7 @@ public class PostAnswer extends AppCompatActivity {
     String loggedIn;
     String Ques;
     String qID;
-    int quesID;
+    TextView count;
     LinearLayout c;
     String res;
     EditText ansB;
@@ -44,6 +44,7 @@ public class PostAnswer extends AppCompatActivity {
         c = findViewById(R.id.ansLayout);
         ansB = findViewById(R.id.ansBox);
         TextView ques = (TextView) findViewById(R.id.ques);
+        count = findViewById(R.id.count);
         Intent j = getIntent();
         loggedIn = j.getStringExtra("loggedUser");
         Ques = j.getStringExtra("Question");
@@ -147,4 +148,59 @@ public class PostAnswer extends AppCompatActivity {
                 al.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
             c.addView(al);
-}}}
+}}
+    public void dvote(View v){
+       vote("downvote");
+    }
+    public void uvote(View v){
+        vote("upvote");
+    }
+
+    public void vote(String voteType){
+        FormBody formBody = new  FormBody.Builder()
+                .add("voteType", voteType)
+                .add("stdnum", loggedIn)
+                .add("qID", qID)
+                .build();
+
+        Request request = new Request.Builder()
+                .url("https://lamp.ms.wits.ac.za/~s2456718/upDown.php")
+                .post(formBody)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                String resBody = response.body().string();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        System.out.println(resBody);
+                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED")){
+                            Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
+                        }else{
+                            try {
+                                JSONArray j  = new JSONArray(resBody);
+                                JSONObject jo = j.getJSONObject(0);
+                                String num = jo.getString("( sum(upvotes) - sum( DISTINCT downvotes))");
+                                System.out.println(num);
+                                count.setText(num);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                    }
+                });
+
+            }
+        });
+    }
+}

@@ -49,7 +49,7 @@ Signup extends AppCompatActivity {
                     .add("pass", password)
                     .build();
             Request request = new Request.Builder()
-                    .url("https://lamp.ms.wits.ac.za/~s2496778/check.php")
+                    .url("https://lamp.ms.wits.ac.za/~s2496778/signup.php")
                     .post(FormBody)
                     .build();
 

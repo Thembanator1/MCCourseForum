@@ -34,6 +34,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="91dp"
                 android:layout_height="62dp"
+                android:onClick="uvote"
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/ic_baseline_up"
 
@@ -54,6 +55,7 @@
                 android:id="@+id/imageView4"
                 android:layout_width="91dp"
                 android:layout_height="61dp"
+                android:onClick="dvote"
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/ic_baseline_down"
             />
