@@ -115,7 +115,7 @@ public class answersLayout extends LinearLayout {
     public void Avote(String voteType){
         FormBody formBody = new  FormBody.Builder()
                 .add("voteType", voteType)
-                .add("stdnum", loggedIn)
+                //.add("stdnum", loggedIn)
                 .add("aID", ansID)
                 .build();
 
