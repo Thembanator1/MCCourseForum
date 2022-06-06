@@ -1,5 +1,6 @@
 package com.example.mccourseforum;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
@@ -36,7 +37,11 @@ public class answersLayout extends LinearLayout {
     TextView downvotes;
     ImageView up;
     ImageView down;
+    private Activity a;
+
+
     public answersLayout(Context context) { super(context);
+
         setOrientation(LinearLayout.HORIZONTAL);
         //TextView qTitle = new TextView(context);
         LinearLayout l = new LinearLayout(context);
@@ -55,22 +60,6 @@ public class answersLayout extends LinearLayout {
         LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(250,250);
         down.setLayoutParams(p);
         up.setLayoutParams(p);
-
-        up.setOnClickListener(new OnClickListener() {
-                                   @Override
-                                   public void onClick(View view) {
-                                            System.out.println("onClick works");
-
-                                   }
-                               }
-         );
-
-         down.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View view) {
-
-             }
-         });
 
 
         //addView(qTitle);
@@ -105,59 +94,5 @@ public class answersLayout extends LinearLayout {
         downvotes.setText(down);
     }
 
-    public void Advote(View v){
-        Avote("downvote");
-    }
-    public void Auvote(View v){
-        Avote("upvote");
-    }
-
-    public void Avote(String voteType){
-        FormBody formBody = new  FormBody.Builder()
-                .add("voteType", voteType)
-                //.add("stdnum", loggedIn)
-                .add("aID", ansID)
-                .build();
-
-        Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/~s2456718/upDown.php")
-                .post(formBody)
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String resBody = response.body().string();
-//                unOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        System.out.println(resBody);
-//                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED")){
-//                           // Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
-//                        }else{
-//                            try {
-//                                JSONArray j  = new JSONArray(resBody);
-//                                JSONObject jo = j.getJSONObject(0);
-//                                String num = jo.getString("( sum(upvotes) - sum( DISTINCT downvotes))");
-//                                System.out.println(num);
-//                                //count.setText(num);
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//
-//                    }
-//                });
-
-            }
-        });
-    }
 
 }

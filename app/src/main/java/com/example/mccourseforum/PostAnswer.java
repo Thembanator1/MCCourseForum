@@ -149,29 +149,42 @@ public class PostAnswer extends AppCompatActivity {
         for(int i = 0 ; i < ja.length(); i ++){
             JSONObject jo = ja.getJSONObject(i);
             answersLayout al = new answersLayout(this);
-            String aID = al.ansID;
+             ansID = al.ansID;
             al.populate(jo);
             if(i % 2==0){
                 al.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
+            al.up.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("onclick works");
+                }
+            });
+
+            al.down.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Indeed");
+                }
+            });
             c.addView(al);
 }}
     public void dvote(View v){
-       vote("downvote");
+       vote("downvote","https://lamp.ms.wits.ac.za/~s2456718/upDown.php","qID",qID);
     }
     public void uvote(View v){
-        vote("upvote");
+        vote("upvote","https://lamp.ms.wits.ac.za/~s2456718/upDown.php","qID",qID);
     }
 
-    public void vote(String voteType){
+    public void vote(String voteType, String URL, String IDtype,String ID){
         FormBody formBody = new  FormBody.Builder()
                 .add("voteType", voteType)
                 .add("stdnum", loggedIn)
-                .add("qID", qID)
+                .add(IDtype, ID)
                 .build();
 
         Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/~s2456718/upDown.php")
+                .url(URL)
                 .post(formBody)
                 .build();
 
@@ -198,6 +211,7 @@ public class PostAnswer extends AppCompatActivity {
                                 String num = jo.getString("( sum(upvotes) - sum( DISTINCT downvotes))");
                                 System.out.println(num);
                                 count.setText(num);
+                                Toast.makeText(getApplicationContext(),voteType+"d",Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
