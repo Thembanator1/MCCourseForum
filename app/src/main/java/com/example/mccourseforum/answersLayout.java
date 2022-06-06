@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,21 +29,21 @@ import okhttp3.Response;
 
 
 public class answersLayout extends LinearLayout {
-    final OkHttpClient client = new OkHttpClient();
+
     String Ans ;
     String ansID;
     TextView Answer;
     TextView AnsweredBy;
     TextView upvotes;
     TextView downvotes;
-    ImageView up;
-    ImageView down;
+    Button up;
+    Button down;
     private Activity a;
 
 
     public answersLayout(Context context) { super(context);
 
-        setOrientation(LinearLayout.HORIZONTAL);
+        setOrientation(LinearLayout.VERTICAL);
         //TextView qTitle = new TextView(context);
         LinearLayout l = new LinearLayout(context);
         l.setOrientation(LinearLayout.VERTICAL);
@@ -51,13 +52,15 @@ public class answersLayout extends LinearLayout {
         AnsweredBy = new TextView(context);
         upvotes  = new TextView(context);
         downvotes = new TextView(context);
-        up = new ImageView(context);
-        up.setImageResource(R.drawable.ic_baseline_up);
-        down = new ImageView(context);
-        down.setImageResource(R.drawable.ic_baseline_down);
+        up = new Button(context);
+        up.setText("upvote");
+        //up.setImageResource(R.drawable.ic_baseline_up);
+        down = new Button(context);
+        down.setText("downvote");
+        //down.setImageResource(R.drawable.ic_baseline_down);
         LinearLayout x = new LinearLayout(context);
         x.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(250,250);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(200,90);
         down.setLayoutParams(p);
         up.setLayoutParams(p);
 
@@ -65,10 +68,9 @@ public class answersLayout extends LinearLayout {
         //addView(qTitle);
         AnsweredBy.setPadding(0,0,0,30);
         l.addView(AnsweredBy);
-        //addView(AnsweredBy);
         Answer.setPadding(0,0,0,50);
-        l.addView(Answer,o);
-        //addView(Answer,o);
+        Answer.setLayoutParams(o);
+        l.addView(Answer);
         LinearLayout votesLayout = new LinearLayout(context);
         votesLayout.setOrientation(LinearLayout.HORIZONTAL);
         upvotes.setPadding(0,0 ,100,0);
@@ -79,7 +81,8 @@ public class answersLayout extends LinearLayout {
         addView(l);
         x.addView(up);
         x.addView(down);
-        addView(x);
+        LinearLayout.LayoutParams z = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+        addView(x,z);
 
     }
     public void populate (JSONObject jo) throws JSONException {
@@ -93,6 +96,5 @@ public class answersLayout extends LinearLayout {
         String down = jo.getString("downvotes") + " down votes";
         downvotes.setText(down);
     }
-
 
 }

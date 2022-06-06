@@ -162,7 +162,7 @@ public class PostAnswer extends AppCompatActivity {
             al.populate(jo);
             String ansID = al.ansID;
             if(i % 2==0){
-                al.setBackgroundColor(Color.parseColor("#EEEEFF"));
+                al.setBackgroundColor(Color.parseColor("#FF0000"));
             }
             al.up.setOnClickListener(new View.OnClickListener() {
                 @Override
