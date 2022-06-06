@@ -10,6 +10,8 @@ import org.json.JSONObject;
 public class questionsLayout extends LinearLayout {
     String Ques ;
     String Qid;
+    String upvotesNum;
+    String downvotesNum;
     TextView question;
     TextView postedBy;
     TextView upvotes;
@@ -42,8 +44,10 @@ public class questionsLayout extends LinearLayout {
         String name = "Posted by " + jo.getString("Fname") +" " + jo.getString("Lname");
         postedBy.setText(name);
         String up = jo.getString("upvotes") + " up votes";
+        upvotesNum = jo.getString("upvotes");
         upvotes.setText(up);
         String down = jo.getString("downvotes") + " down votes";
+        downvotesNum = jo.getString("downvotes");
         downvotes.setText(down);
     }
 

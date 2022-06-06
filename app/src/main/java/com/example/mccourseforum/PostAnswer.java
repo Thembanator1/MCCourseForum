@@ -28,7 +28,7 @@ import okhttp3.Response;
 
 public class PostAnswer extends AppCompatActivity {
     final OkHttpClient client = new OkHttpClient();
-    String ansID;
+    //String ansID;
     EditText answer;
     String loggedIn;
     String Ques;
@@ -36,6 +36,7 @@ public class PostAnswer extends AppCompatActivity {
     TextView count;
     LinearLayout c;
     String res;
+    String totV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +46,16 @@ public class PostAnswer extends AppCompatActivity {
     c = findViewById(R.id.ansLayout);
         TextView ques = (TextView) findViewById(R.id.ques);
         count = findViewById(R.id.count);
+
         Intent j = getIntent();
         loggedIn = j.getStringExtra("loggedUser");
         Ques = j.getStringExtra("Question");
         qID = j.getStringExtra("qID");
+        totV = j.getStringExtra("totVotes");
         System.out.println(qID);
        // quesID = Integer.parseInt(qID);
         ques.setText(Ques);
+        count.setText(totV);
         answer = (EditText) findViewById(R.id.ansBox);
 
         //OkHttpClient client = new OkHttpClient();
@@ -137,6 +141,12 @@ public class PostAnswer extends AppCompatActivity {
 
                 }
             });
+            answer.setText("");
+            overridePendingTransition(0,0);
+            finish();
+            overridePendingTransition(0,0);
+            startActivity(getIntent());
+            overridePendingTransition(0,0);
         }
         else {
             Toast.makeText(getApplicationContext(),"Please enter an answer",Toast.LENGTH_SHORT).show();
@@ -149,8 +159,8 @@ public class PostAnswer extends AppCompatActivity {
         for(int i = 0 ; i < ja.length(); i ++){
             JSONObject jo = ja.getJSONObject(i);
             answersLayout al = new answersLayout(this);
-             ansID = al.ansID;
             al.populate(jo);
+            String ansID = al.ansID;
             if(i % 2==0){
                 al.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
@@ -158,6 +168,9 @@ public class PostAnswer extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     System.out.println("onclick works");
+                    vote("upvote","https://lamp.ms.wits.ac.za/~s2456718/ansUpDown.php","aID",ansID);
+                    //refreshA();
+
                 }
             });
 
@@ -165,6 +178,8 @@ public class PostAnswer extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     System.out.println("Indeed");
+                    vote("downvote","https://lamp.ms.wits.ac.za/~s2456718/ansUpDown.php","aID",ansID);
+                    //refreshA();
                 }
             });
             c.addView(al);
@@ -202,7 +217,7 @@ public class PostAnswer extends AppCompatActivity {
                     public void run() {
 
                         System.out.println(resBody);
-                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED")){
+                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED") || resBody.equals("UPVOTED") || resBody.equals("DOWNVOTED")){
                             Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
                         }else{
                             try {
@@ -223,5 +238,9 @@ public class PostAnswer extends AppCompatActivity {
 
             }
         });
+    }
+
+    public  void refreshA(){
+        this.recreate();
     }
 }

@@ -81,6 +81,9 @@ public class QuestionsDisplay extends AppCompatActivity {
             ql.populate(jo);
             String q= ql.Ques;
             String qID = ql.Qid;
+            int upNum = Integer.parseInt(ql.upvotesNum);
+            int downNum = Integer.parseInt(ql.downvotesNum);
+            String tot = String.valueOf(upNum - downNum);
             if(i % 2==0){
                 ql.setBackgroundColor(Color.parseColor("#FF0000"));
             }
@@ -92,6 +95,7 @@ public class QuestionsDisplay extends AppCompatActivity {
                     i.putExtra("Question",q);
                     i.putExtra("loggedUser",loggedIn);
                     i.putExtra("qID", qID);
+                    i.putExtra("totVotes",tot);
                     startActivity(i);
 
                 }
