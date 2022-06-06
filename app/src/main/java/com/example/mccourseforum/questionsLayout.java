@@ -24,7 +24,9 @@ public class questionsLayout extends LinearLayout {
          downvotes = new TextView(context);
 
         //addView(qTitle);
+        postedBy.setPadding(0,0,0,15);
         addView(postedBy);
+        question.setPadding(0,0,0,15);
         addView(question);
         LinearLayout votesLayout = new LinearLayout(context);
         votesLayout.setOrientation(LinearLayout.HORIZONTAL);

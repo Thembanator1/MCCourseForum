@@ -28,6 +28,7 @@ import okhttp3.Response;
 
 public class PostAnswer extends AppCompatActivity {
     final OkHttpClient client = new OkHttpClient();
+    String ansID;
     EditText answer;
     String loggedIn;
     String Ques;
@@ -35,14 +36,13 @@ public class PostAnswer extends AppCompatActivity {
     TextView count;
     LinearLayout c;
     String res;
-    EditText ansB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_answer);
-        c = findViewById(R.id.ansLayout);
-        ansB = findViewById(R.id.ansBox);
+
+
+    c = findViewById(R.id.ansLayout);
         TextView ques = (TextView) findViewById(R.id.ques);
         count = findViewById(R.id.count);
         Intent j = getIntent();
@@ -102,48 +102,55 @@ public class PostAnswer extends AppCompatActivity {
     }*/
 
     public void onReply(View view) {
-        //replyButton
-       // Toast.makeText(getApplicationContext(),qID,Toast.LENGTH_SHORT).show();
-        FormBody formBody = new  FormBody.Builder()
-                .add("answer", answer.getText().toString())
-                .add("answeredBy", loggedIn)
-                .add("qID", qID)
-                .build();
 
-        Request request = new Request.Builder()
-                .url("https://lamp.ms.wits.ac.za/~s2456718/answers.php")
-                .post(formBody)
-                .build();
+        String ans;
+        ans = answer.getText().toString();
+        if(!ans.equals("")){
+            FormBody formBody = new  FormBody.Builder()
+                    .add("answer", answer.getText().toString())
+                    .add("answeredBy", loggedIn)
+                    .add("qID", qID)
+                    .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                e.printStackTrace();
-            }
+            Request request = new Request.Builder()
+                    .url("https://lamp.ms.wits.ac.za/~s2456718/answers.php")
+                    .post(formBody)
+                    .build();
 
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                String resBody = response.body().string();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
-                        System.out.println(resBody);
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    e.printStackTrace();
+                }
 
-                    }
-                });
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    String resBody = response.body().string();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
+                            System.out.println(resBody);
 
-            }
-        });
+                        }
+                    });
+
+                }
+            });
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Please enter an answer",Toast.LENGTH_SHORT).show();
+        }
+
+
     }
     public void processJSON (String json) throws JSONException {
         JSONArray ja = new JSONArray(json);
         for(int i = 0 ; i < ja.length(); i ++){
             JSONObject jo = ja.getJSONObject(i);
             answersLayout al = new answersLayout(this);
+            String aID = al.ansID;
             al.populate(jo);
-//            String q= ql.Ques;
-//            String qID = ql.Qid;
             if(i % 2==0){
                 al.setBackgroundColor(Color.parseColor("#EEEEFF"));
             }
