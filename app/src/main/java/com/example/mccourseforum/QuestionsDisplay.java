@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,14 +24,16 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class QuestionsDisplay extends AppCompatActivity {
+public class QuestionsDisplay extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     LinearLayout c;
     String loggedIn;
     String res;
+    final OkHttpClient client = new OkHttpClient();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +42,14 @@ public class QuestionsDisplay extends AppCompatActivity {
         loggedIn = j.getStringExtra("loggedUser");
         System.out.println(loggedIn);
         c = findViewById(R.id.mainLayout);
-        OkHttpClient client = new OkHttpClient();
+
+        Spinner spinner = findViewById(R.id.sortSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sort, android.R.layout.simple_dropdown_item_1line);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        //OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
                 .url("https://lamp.ms.wits.ac.za/~s2456718/displayQ.php")
@@ -115,4 +128,129 @@ public class QuestionsDisplay extends AppCompatActivity {
         this.recreate();
     }
 
+    public void onSort(View view) {
+        Request request = new Request.Builder()
+                .url("https://lamp.ms.wits.ac.za/~s2456718/displayQ.php")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                // ... check for failure using `isSuccessful` before proceeding
+
+                // Read data on the worker thread
+                final String responseData = response.body().string();
+                res = responseData;
+
+                // Run view-related code back on the main thread
+                QuestionsDisplay.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            processJSON(responseData);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        if(text.equals("Asc-UpVotes")){
+            c.removeAllViews();
+            FormBody formBody = new FormBody.Builder()
+                    .add("SortBy", text)
+                    .build();
+            Request request = new Request.Builder()
+                    .url("https://lamp.ms.wits.ac.za/~s2456718/sortedDisplayQ.php")
+                    .post(formBody)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, final Response response) throws IOException {
+                    // ... check for failure using `isSuccessful` before proceeding
+
+                    // Read data on the worker thread
+                    final String responseData = response.body().string();
+                    res = responseData;
+
+                    // Run view-related code back on the main thread
+                    QuestionsDisplay.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                processJSON(responseData);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            });
+            //End-Of-Ascending-IF-Statement Below
+        }else if(text.equals("Descendin")){
+            c.removeAllViews();
+            FormBody formBody = new FormBody.Builder()
+                    .add("SortBy", text)
+                    .build();
+            Request request = new Request.Builder()
+                    .url("https://lamp.ms.wits.ac.za/~s2456718/sortedDisplayQ.php")
+                    .post(formBody)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, final Response response) throws IOException {
+                    // ... check for failure using `isSuccessful` before proceeding
+
+                    // Read data on the worker thread
+                    final String responseData = response.body().string();
+                    res = responseData;
+
+                    // Run view-related code back on the main thread
+                    QuestionsDisplay.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                processJSON(responseData);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            });
+            //End-Of-Ascending-IF-Statement Below
+        }
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void onClear(View view) {
+        c.removeAllViews();
+    }
 }

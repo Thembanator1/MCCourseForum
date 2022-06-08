@@ -3,4 +3,12 @@
     <string name="topic_name">Topic name</string>
     <string name="topic">Topic</string>
     <string name="asked_by">Asked By</string>
+
+    <string-array name="sort">
+        <item>Sort</item>
+        <item>Asc-UpVotes</item>
+        <item>Desc-UpVotes</item>
+        <item>Asc-DownVotes</item>
+        <item>Desc-DownVotes</item>
+    </string-array>
 </resources>
