@@ -35,7 +35,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="495dp">
+        android:layout_height="620dp">
 
         <LinearLayout
             android:id="@+id/mainLayout"
@@ -47,14 +47,8 @@
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:onClick="gop"
         android:text="Post a question" />
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout" />
 
 </LinearLayout>
