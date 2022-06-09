@@ -81,27 +81,44 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="426dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/ansLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="426dp">
+
+                    <LinearLayout
+                        android:id="@+id/ansLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <EditText
+                    android:id="@+id/ansBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="76dp"
+                    android:autofillHints=""
+                    android:ems="10"
+                    android:fitsSystemWindows="true"
+                    android:hint="Type Your Response"
+                    android:inputType="textPersonName"
+                    android:windowSoftInputMode="adjustResize|adjustPan" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <EditText
-        android:id="@+id/ansBox"
-        android:layout_width="match_parent"
-        android:layout_height="76dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="Type Your Response"
-        android:windowSoftInputMode="adjustResize|adjustPan"
-        android:fitsSystemWindows="true"
-        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/replyButton"

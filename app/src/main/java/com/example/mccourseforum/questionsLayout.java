@@ -1,6 +1,7 @@
 package com.example.mccourseforum;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,8 +28,10 @@ public class questionsLayout extends LinearLayout {
 
         //addView(qTitle);
         postedBy.setPadding(0,0,0,15);
+        postedBy.setTypeface(postedBy.getTypeface(), Typeface.BOLD_ITALIC);
         addView(postedBy);
         question.setPadding(0,0,0,15);
+        question.setTypeface(question.getTypeface(), Typeface.BOLD);
         addView(question);
         LinearLayout votesLayout = new LinearLayout(context);
         votesLayout.setOrientation(LinearLayout.HORIZONTAL);

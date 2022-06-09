@@ -2,6 +2,7 @@ package com.example.mccourseforum;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -67,9 +68,11 @@ public class answersLayout extends LinearLayout {
 
         //addView(qTitle);
         AnsweredBy.setPadding(0,0,0,30);
+        AnsweredBy.setTypeface(AnsweredBy.getTypeface(), Typeface.BOLD_ITALIC);
         l.addView(AnsweredBy);
         Answer.setPadding(0,0,0,50);
         Answer.setLayoutParams(o);
+        Answer.setTypeface(Answer.getTypeface(),Typeface.BOLD);
         l.addView(Answer);
         LinearLayout votesLayout = new LinearLayout(context);
         votesLayout.setOrientation(LinearLayout.HORIZONTAL);

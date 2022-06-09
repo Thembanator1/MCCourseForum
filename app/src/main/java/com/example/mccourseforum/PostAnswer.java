@@ -60,27 +60,10 @@ public class PostAnswer extends AppCompatActivity {
         System.out.println(qID);
        // quesID = Integer.parseInt(qID);
         ques.setText(Ques);
-        count.setText(totV);
+        //count.setText(totV);
+        vote("none","https://lamp.ms.wits.ac.za/~s2456718/upDown.php","qID",qID);
         answer = (EditText) findViewById(R.id.ansBox);
-        answer.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                answer.setTranslationY(-600f);
-                return false;
-            }
-        });
 
-        answer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(event != null&&(event.getKeyCode() == KeyEvent.KEYCODE_ENTER)){
-                    InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    in.hideSoftInputFromWindow(answer.getApplicationWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
-                }
-                answer.setTranslationY(0f);
-                return false;
-            }
-        });
 
         //OkHttpClient client = new OkHttpClient();
 
@@ -186,14 +169,18 @@ public class PostAnswer extends AppCompatActivity {
             al.populate(jo);
             String ansID = al.ansID;
             if(i % 2==0){
-                al.setBackgroundColor(Color.parseColor("#FF0000"));
+                al.setBackgroundColor(Color.parseColor("#E6E6FA"));
             }
             al.up.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("onclick works");
                     vote("upvote","https://lamp.ms.wits.ac.za/~s2456718/ansUpDown.php","aID",ansID);
                     //refreshA();
+                    overridePendingTransition(0,0);
+                    finish();
+                    overridePendingTransition(0,0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);
 
                 }
             });
@@ -201,9 +188,13 @@ public class PostAnswer extends AppCompatActivity {
             al.down.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("Indeed");
                     vote("downvote","https://lamp.ms.wits.ac.za/~s2456718/ansUpDown.php","aID",ansID);
                     //refreshA();
+                    overridePendingTransition(0,0);
+                    finish();
+                    overridePendingTransition(0,0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);
                 }
             });
             c.addView(al);
@@ -238,10 +229,11 @@ public class PostAnswer extends AppCompatActivity {
                 String resBody = response.body().string();
                 runOnUiThread(new Runnable() {
                     @Override
-                    public void run() {
+                    public void run(){
 
                         System.out.println(resBody);
-                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED") || resBody.equals("UPVOTED") || resBody.equals("DOWNVOTED")){
+                        if(resBody.equals("Already DOWNVOTED") || resBody.equals("Already UPVOTED") || resBody.equals("UPVOTED") || resBody.equals("DOWNVOTED")
+                        || resBody.equals("\r\nAlready UPVOTED") || resBody.equals("\r\nAlready DOWNVOTED")){
                             Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_LONG).show();
                         }else{
                             try {
@@ -250,7 +242,9 @@ public class PostAnswer extends AppCompatActivity {
                                 String num = jo.getString("( sum(upvotes) - sum( DISTINCT downvotes))");
                                 System.out.println(num);
                                 count.setText(num);
-                                Toast.makeText(getApplicationContext(),voteType+"d",Toast.LENGTH_LONG).show();
+                                if(!voteType.equals("none")) {
+                                    Toast.makeText(getApplicationContext(), voteType + "d", Toast.LENGTH_LONG).show();
+                                }
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

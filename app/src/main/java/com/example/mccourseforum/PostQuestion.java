@@ -40,6 +40,8 @@ public class PostQuestion extends AppCompatActivity {
     public void post_it(View view) {
         String the_question;
         the_question = the_query.getText().toString();
+        the_question = the_question.replace("'","''");
+        System.out.println(the_question);
         if (!the_question.equals("")) {
             RequestBody FormBody = new FormBody.Builder()
                     .add("question", the_question)
@@ -64,7 +66,10 @@ public class PostQuestion extends AppCompatActivity {
                         public void run() {
                             Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_SHORT).show();
                             if(resBody.equals("qAdded")){
-                                PostQuestion.this.finish();
+                                Intent i = new Intent(view.getContext(), QuestionsDisplay.class);
+                                i.putExtra("loggedUser",loggedIn);
+                                startActivity(i);
+
                             }
 
                         }

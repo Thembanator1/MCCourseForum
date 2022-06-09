@@ -52,23 +52,9 @@
         android:text="Post a question" />
 
     <Button
-        android:id="@+id/myQ"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="refreshQ"
-        android:text="refesh to see new Questions" />
-
-    <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout" />
-
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="clear scroll view"
-        android:onClick="onClear"/>
 
 </LinearLayout>

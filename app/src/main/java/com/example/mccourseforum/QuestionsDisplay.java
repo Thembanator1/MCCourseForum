@@ -98,7 +98,7 @@ public class QuestionsDisplay extends AppCompatActivity implements AdapterView.O
             int downNum = Integer.parseInt(ql.downvotesNum);
             String tot = String.valueOf(upNum - downNum);
             if(i % 2==0){
-                ql.setBackgroundColor(Color.parseColor("#FF0000"));
+                ql.setBackgroundColor(Color.parseColor("#D3D3D3"));
             }
             c.addView(ql);
             ql.setOnClickListener(new View.OnClickListener() {

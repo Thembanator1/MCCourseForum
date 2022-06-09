@@ -24,6 +24,7 @@ public class
 Signup extends AppCompatActivity {
     final OkHttpClient client = new OkHttpClient();
     EditText FName, LName, stdNum, pass;
+    String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ Signup extends AppCompatActivity {
     }
 
     public void onSign(View view) {
+
         String firstname, lastname, password, stdnum;
         firstname = FName.getText().toString();
         lastname = LName.getText().toString();
@@ -43,13 +45,13 @@ Signup extends AppCompatActivity {
         stdnum = stdNum.getText().toString();
         if (!firstname.equals("") && !lastname.equals("") && !password.equals("") && !stdnum.equals("")) {
             RequestBody FormBody = new FormBody.Builder()
-                    .add("num", stdnum)
                     .add("fname", firstname)
                     .add("lname", lastname)
+                    .add("num", stdnum)
                     .add("pass", password)
                     .build();
             Request request = new Request.Builder()
-                    .url("https://lamp.ms.wits.ac.za/~s2496778/signup.php")
+                    .url("https://lamp.ms.wits.ac.za/~s2456718/register.php")
                     .post(FormBody)
                     .build();
 
@@ -61,17 +63,22 @@ Signup extends AppCompatActivity {
 
                 @Override
                 public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                    final String resBody = response.body().string();
+                    res = resBody;
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(),"Signup Successful",Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(getApplicationContext(),resBody,Toast.LENGTH_SHORT).show();
+                            if(resBody.equals("signup successful!")) {
+                                Intent intent = new Intent(view.getContext(), Login.class);
+                                startActivity(intent);
+                            }
                         }
                     });
                 }
             });
-            Intent intent = new Intent(this , Login.class );
-            startActivity(intent);
+
         }else{
             Toast.makeText(getApplicationContext(),"All Fields Required",Toast.LENGTH_SHORT).show();
         }
