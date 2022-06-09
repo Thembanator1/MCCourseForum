@@ -165,48 +165,10 @@ public class QuestionsDisplay extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        if(text.equals("Asc-UpVotes")){
+        if (!text.equals("Sort")) {
             c.removeAllViews();
             FormBody formBody = new FormBody.Builder()
-                    .add("SortBy", text)
-                    .build();
-            Request request = new Request.Builder()
-                    .url("https://lamp.ms.wits.ac.za/~s2456718/sortedDisplayQ.php")
-                    .post(formBody)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onResponse(Call call, final Response response) throws IOException {
-                    // ... check for failure using `isSuccessful` before proceeding
-
-                    // Read data on the worker thread
-                    final String responseData = response.body().string();
-                    res = responseData;
-
-                    // Run view-related code back on the main thread
-                    QuestionsDisplay.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                processJSON(responseData);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            });
-            //End-Of-Ascending-IF-Statement Below
-        }else if(text.equals("Descendin")){
-            c.removeAllViews();
-            FormBody formBody = new FormBody.Builder()
-                    .add("SortBy", text)
+                    .add("SortedBy", text)
                     .build();
             Request request = new Request.Builder()
                     .url("https://lamp.ms.wits.ac.za/~s2456718/sortedDisplayQ.php")
@@ -242,8 +204,9 @@ public class QuestionsDisplay extends AppCompatActivity implements AdapterView.O
             });
             //End-Of-Ascending-IF-Statement Below
         }
-
     }
+
+
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

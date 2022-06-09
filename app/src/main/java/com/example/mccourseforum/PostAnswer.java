@@ -3,10 +3,15 @@ package com.example.mccourseforum;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -57,6 +62,25 @@ public class PostAnswer extends AppCompatActivity {
         ques.setText(Ques);
         count.setText(totV);
         answer = (EditText) findViewById(R.id.ansBox);
+        answer.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                answer.setTranslationY(-600f);
+                return false;
+            }
+        });
+
+        answer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(event != null&&(event.getKeyCode() == KeyEvent.KEYCODE_ENTER)){
+                    InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    in.hideSoftInputFromWindow(answer.getApplicationWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+                }
+                answer.setTranslationY(0f);
+                return false;
+            }
+        });
 
         //OkHttpClient client = new OkHttpClient();
 

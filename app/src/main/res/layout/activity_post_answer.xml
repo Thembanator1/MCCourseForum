@@ -32,13 +32,13 @@
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="91dp"
-                android:layout_height="62dp"
-                android:onClick="uvote"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
                 android:contentDescription="@string/app_name"
+                android:onClick="uvote"
                 app:srcCompat="@drawable/ic_baseline_up"
 
-                 />
+                />
 
             <TextView
                 android:id="@+id/count"
@@ -53,19 +53,18 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="91dp"
-                android:layout_height="61dp"
-                android:onClick="dvote"
+                android:layout_width="69dp"
+                android:layout_height="50dp"
                 android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/ic_baseline_down"
-            />
+                android:onClick="dvote"
+                app:srcCompat="@drawable/ic_baseline_down" />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/ques"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="118dp"
             android:gravity="center"
             android:scrollbars="vertical"
             android:textAlignment="viewStart" />
@@ -100,6 +99,8 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="Type Your Response"
+        android:windowSoftInputMode="adjustResize|adjustPan"
+        android:fitsSystemWindows="true"
         android:inputType="textPersonName" />
 
     <Button
