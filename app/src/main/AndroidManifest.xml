@@ -18,9 +18,6 @@
             android:exported="false"
             />
         <activity
-            android:name=".AnswersDisplay"
-            android:exported="false" />
-        <activity
             android:name=".QuestionsDisplay"
             android:exported="false" />
         <activity
