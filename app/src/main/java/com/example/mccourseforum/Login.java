@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +24,13 @@ import okhttp3.Response;
 public class Login extends AppCompatActivity {
     final OkHttpClient client = new OkHttpClient();
     EditText logNum, logPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
 
     public void onLog(View view) {
         logNum = (EditText) findViewById(R.id.logNum);
@@ -70,6 +73,9 @@ public class Login extends AppCompatActivity {
         });
 
     }
+
+
+
     private void gotoHome(){
         Intent intent = new Intent(this , MainActivity.class );
         startActivity(intent);
