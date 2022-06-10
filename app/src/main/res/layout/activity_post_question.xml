@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFC107"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -10,24 +11,29 @@
 
 
 
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Post A Question"
+        android:layout_height="50dp"
+        android:text="What's on Your mind?"
         android:gravity="center"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="#881d10"
-        android:layout_margin="10dp"/>
+        android:background="@android:color/darker_gray"
+        android:textColor="#010A3A" />
+
+
 
     <EditText
         android:id="@+id/enter_query"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:hint="Enter Your Question"
         android:textSize="18sp"
-        android:textColor="#881d10"
+        android:textColor="#010A3A"
         />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,22 +44,23 @@
             android:id="@+id/post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Post"
-            android:onClick="post_it"
             android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:textAllCaps="false"/>
-         <Button
-             android:id="@+id/cancel"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:layout_margin="10dp"
-             android:text="Cancel"
-             android:onClick="returntoQ"
-             android:textSize="20sp"
-             android:textAllCaps="false"/>
+            android:layout_weight="1"
+            android:onClick="post_it"
+            android:text="Post"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="returntoQ"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

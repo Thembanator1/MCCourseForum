@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFC107"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/cardview_shadow_end_color"
     tools:context=".QuestionsDisplay">
 
     <LinearLayout
@@ -49,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:onClick="gop"
-        android:text="Post a question" />
+        android:text="Post a question"
+        />
 
 </LinearLayout>
